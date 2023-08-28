@@ -63,6 +63,15 @@ static void HlwCfInterrupt(void* context) {
 	g_p_pulses++;
 }
 
+#elif PLATFORM_BL602
+
+static void HlwCf1Interrupt(void* context) {
+bl_gpio_register_interrupt_callback(GPIO_HLW_CF1_pin);
+}
+static void HlwCf1Interrupt(void* context) {
+bl_gpio_register_interrupt_callback(GPIO_HLW_CF_pin);
+}
+
 #else
 
 void HlwCf1Interrupt(unsigned char pinNum) {  // Service Voltage and Current
